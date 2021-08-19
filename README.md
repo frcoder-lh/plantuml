@@ -1,2 +1,788 @@
-# plantuml
-plantuml教程及主题模板
+# plantuml教程及主题模板
+
+plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)  
+plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
+
+---
+## 时序图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png)
+
+```java
+@startuml
+
+' 引入主题
+' !include https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml
+!include https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml
+
+' 定义角色
+actor User
+participant "微服务A" as a
+box "Internal Service" #LightBlue
+participant "微服务B" as b $c1
+participant "微服务C" as c
+end box
+
+' 开始流程
+
+[->User: 开始
+User-[#red]>a ++: 发出指令\n这是一个很长的指令
+
+== 初始化 ==
+a->b ++ #E1F5A9: 第一步
+
+|||
+|||
+loop 3次
+b->c --++: 第二步
+end
+
+c->c ++ : 第三步
+
+alt#Gold #yellow 如果成功，则直接返回
+c-->>a --
+else #Pink 失败
+c->c ++ : 重试一次
+c-->>a --
+end
+deactivate c
+
+a-->>User: bye
+
+group 随便框一下 [哈哈哈]
+User-->>]: 结束
+end
+
+note left of User #aqua
+这是一个note
+欢迎使用时序图
+end note
+
+@enduml
+
+```
+---
+## 流程图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3a344f4b78ae4050b5e97f5bbb7ddb88.png)
+```java
+@startuml
+
+' 引入主题
+' !include https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml
+!include https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml
+
+' 开始流程
+|外部调用|
+start
+:第一步;
+:<b>第二步
+可以换行
+
+或者空一行;
+
+|$c1|内部处理|
+
+if (是否继续进行) then (是)
+partition 循环处理 {
+  repeat :<b>循环第一步;
+    $c1 :循环第二步;
+  repeat while (继续循环)  is (是) not (否)
+}
+else (否)
+endif
+
+|外部调用|
+:最后一步;
+
+stop
+
+@enduml
+
+```
+
+---
+## 自定义主题
+已发布到：[https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml](https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml)  
+已发布到：[https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml](https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml)
+```css
+@startuml
+
+' 预置颜色
+!$c1="#E1F5A9"
+!$c2="#F3E2A9"
+!$c3="#F5A9A9"
+!$c4="#A9E2F3"
+!$c5="#ECCEF5"
+
+skinparam style strictuml
+skinparam backgroundColor write
+
+' 时序图
+skinparam Sequence {
+
+MessageAlign center
+
+LifeLine {
+BorderColor black
+BackgroundColor write
+}
+
+Arrow {
+Color black
+BackgroundColor write
+FontColor black
+FontSize 13
+FontName Monaco
+}
+
+Actor {
+BorderColor black
+BackgroundColor write
+FontColor black
+FontSize 14
+FontName Monaco
+}
+
+Participant {
+BorderColor black
+BackgroundColor write
+FontName Monaco
+FontSize 14
+FontColor black
+}
+
+Group {
+BorderColor black
+BorderThickness 0.7
+FontName Monaco
+FontSize 11
+FontColor black
+
+Header {
+BorderColor black
+BorderThickness 0.7
+FontName Monaco
+FontSize 11
+FontColor black
+}
+}
+
+Box {
+BorderColor black
+}
+
+}
+
+
+
+' 流程图
+skinparam Activity {
+
+BorderColor black
+BorderThickness 1
+BackgroundColor write
+LineColor red
+FontColor black
+FontName Monaco
+FontSize 14
+
+Arrow {
+Color black
+Thickness 0.5
+BackgroundColor write
+FontColor black
+FontSize 14
+FontName Monaco
+MessageAlignment center
+}
+
+Diamond {
+BorderColor black
+BorderThickness 0.7
+BackgroundColor write
+LineColor black
+FontColor black
+FontName Monaco
+FontSize 14
+}
+
+}
+
+skinparam Condition {
+Style InsideDiamond
+EndStyle hline
+}
+
+@enduml
+
+```
+-----
+# 附录：样式表
+```css
+ActivityBackgroundColor
+ActivityBarColor
+ActivityBorderColor
+ActivityBorderThickness
+ActivityDiamondBackgroundColor
+ActivityDiamondBorderColor
+ActivityDiamondFontColor
+ActivityDiamondFontName
+ActivityDiamondFontSize
+ActivityDiamondFontStyle
+ActivityEndColor
+ActivityFontColor
+ActivityFontName
+ActivityFontSize
+ActivityFontStyle
+ActivityStartColor
+ActorBackgroundColor
+ActorBorderColor
+ActorFontColor
+ActorFontName
+ActorFontSize
+ActorFontStyle
+ActorStereotypeFontColor
+ActorStereotypeFontName
+ActorStereotypeFontSize
+ActorStereotypeFontStyle
+AgentBackgroundColor
+AgentBorderColor
+AgentBorderThickness
+AgentFontColor
+AgentFontName
+AgentFontSize
+AgentFontStyle
+AgentStereotypeFontColor
+AgentStereotypeFontName
+AgentStereotypeFontSize
+AgentStereotypeFontStyle
+ArchimateBackgroundColor
+ArchimateBorderColor
+ArchimateBorderThickness
+ArchimateFontColor
+ArchimateFontName
+ArchimateFontSize
+ArchimateFontStyle
+ArchimateStereotypeFontColor
+ArchimateStereotypeFontName
+ArchimateStereotypeFontSize
+ArchimateStereotypeFontStyle
+ArrowColor
+ArrowFontColor
+ArrowFontName
+ArrowFontSize
+ArrowFontStyle
+ArrowHeadColor
+ArrowLollipopColor
+ArrowMessageAlignment
+ArrowThickness
+ArtifactBackgroundColor
+ArtifactBorderColor
+ArtifactFontColor
+ArtifactFontName
+ArtifactFontSize
+ArtifactFontStyle
+ArtifactStereotypeFontColor
+ArtifactStereotypeFontName
+ArtifactStereotypeFontSize
+ArtifactStereotypeFontStyle
+BackgroundColor
+BiddableBackgroundColor
+BiddableBorderColor
+BoundaryBackgroundColor
+BoundaryBorderColor
+BoundaryFontColor
+BoundaryFontName
+BoundaryFontSize
+BoundaryFontStyle
+BoundaryStereotypeFontColor
+BoundaryStereotypeFontName
+BoundaryStereotypeFontSize
+BoundaryStereotypeFontStyle
+BoxPadding
+CaptionFontColor
+CaptionFontName
+CaptionFontSize
+CaptionFontStyle
+CardBackgroundColor
+CardBorderColor
+CardBorderThickness
+CardFontColor
+CardFontName
+CardFontSize
+CardFontStyle
+CardStereotypeFontColor
+CardStereotypeFontName
+CardStereotypeFontSize
+CardStereotypeFontStyle
+CircledCharacterFontColor
+CircledCharacterFontName
+CircledCharacterFontSize
+CircledCharacterFontStyle
+CircledCharacterRadius
+ClassAttributeFontColor
+ClassAttributeFontName
+ClassAttributeFontSize
+ClassAttributeFontStyle
+ClassAttributeIconSize
+ClassBackgroundColor
+ClassBorderColor
+ClassBorderThickness
+ClassFontColor
+ClassFontName
+ClassFontSize
+ClassFontStyle
+ClassHeaderBackgroundColor
+ClassStereotypeFontColor
+ClassStereotypeFontName
+ClassStereotypeFontSize
+ClassStereotypeFontStyle
+CloudBackgroundColor
+CloudBorderColor
+CloudFontColor
+CloudFontName
+CloudFontSize
+CloudFontStyle
+CloudStereotypeFontColor
+CloudStereotypeFontName
+CloudStereotypeFontSize
+CloudStereotypeFontStyle
+CollectionsBackgroundColor
+CollectionsBorderColor
+ColorArrowSeparationSpace
+ComponentBackgroundColor
+ComponentBorderColor
+ComponentBorderThickness
+ComponentFontColor
+ComponentFontName
+ComponentFontSize
+ComponentFontStyle
+ComponentStereotypeFontColor
+ComponentStereotypeFontName
+ComponentStereotypeFontSize
+ComponentStereotypeFontStyle
+ComponentStyle
+ConditionEndStyle
+ConditionStyle
+ControlBackgroundColor
+ControlBorderColor
+ControlFontColor
+ControlFontName
+ControlFontSize
+ControlFontStyle
+ControlStereotypeFontColor
+ControlStereotypeFontName
+ControlStereotypeFontSize
+ControlStereotypeFontStyle
+DatabaseBackgroundColor
+DatabaseBorderColor
+DatabaseFontColor
+DatabaseFontName
+DatabaseFontSize
+DatabaseFontStyle
+DatabaseStereotypeFontColor
+DatabaseStereotypeFontName
+DatabaseStereotypeFontSize
+DatabaseStereotypeFontStyle
+DefaultFontColor
+DefaultFontName
+DefaultFontSize
+DefaultFontStyle
+DefaultMonospacedFontName
+DefaultTextAlignment
+DesignedBackgroundColor
+DesignedBorderColor
+DesignedDomainBorderThickness
+DesignedDomainFontColor
+DesignedDomainFontName
+DesignedDomainFontSize
+DesignedDomainFontStyle
+DesignedDomainStereotypeFontColor
+DesignedDomainStereotypeFontName
+DesignedDomainStereotypeFontSize
+DesignedDomainStereotypeFontStyle
+DiagramBorderColor
+DiagramBorderThickness
+DomainBackgroundColor
+DomainBorderColor
+DomainBorderThickness
+DomainFontColor
+DomainFontName
+DomainFontSize
+DomainFontStyle
+DomainStereotypeFontColor
+DomainStereotypeFontName
+DomainStereotypeFontSize
+DomainStereotypeFontStyle
+Dpi
+EntityBackgroundColor
+EntityBorderColor
+EntityFontColor
+EntityFontName
+EntityFontSize
+EntityFontStyle
+EntityStereotypeFontColor
+EntityStereotypeFontName
+EntityStereotypeFontSize
+EntityStereotypeFontStyle
+EnumBackgroundColor
+FileBackgroundColor
+FileBorderColor
+FileFontColor
+FileFontName
+FileFontSize
+FileFontStyle
+FileStereotypeFontColor
+FileStereotypeFontName
+FileStereotypeFontSize
+FileStereotypeFontStyle
+FixCircleLabelOverlapping
+FolderBackgroundColor
+FolderBorderColor
+FolderFontColor
+FolderFontName
+FolderFontSize
+FolderFontStyle
+FolderStereotypeFontColor
+FolderStereotypeFontName
+FolderStereotypeFontSize
+FolderStereotypeFontStyle
+FooterFontColor
+FooterFontName
+FooterFontSize
+FooterFontStyle
+FrameBackgroundColor
+FrameBorderColor
+FrameFontColor
+FrameFontName
+FrameFontSize
+FrameFontStyle
+FrameStereotypeFontColor
+FrameStereotypeFontName
+FrameStereotypeFontSize
+FrameStereotypeFontStyle
+GenericDisplay
+Guillemet
+Handwritten
+HeaderFontColor
+HeaderFontName
+HeaderFontSize
+HeaderFontStyle
+HexagonBackgroundColor
+HexagonBorderColor
+HexagonBorderThickness
+HexagonFontColor
+HexagonFontName
+HexagonFontSize
+HexagonFontStyle
+HexagonStereotypeFontColor
+HexagonStereotypeFontName
+HexagonStereotypeFontSize
+HexagonStereotypeFontStyle
+HyperlinkColor
+HyperlinkUnderline
+IconIEMandatoryColor
+IconPackageBackgroundColor
+IconPackageColor
+IconPrivateBackgroundColor
+IconPrivateColor
+IconProtectedBackgroundColor
+IconProtectedColor
+IconPublicBackgroundColor
+IconPublicColor
+InterfaceBackgroundColor
+InterfaceBorderColor
+InterfaceFontColor
+InterfaceFontName
+InterfaceFontSize
+InterfaceFontStyle
+InterfaceStereotypeFontColor
+InterfaceStereotypeFontName
+InterfaceStereotypeFontSize
+InterfaceStereotypeFontStyle
+LabelFontColor
+LabelFontName
+LabelFontSize
+LabelFontStyle
+LabelStereotypeFontColor
+LabelStereotypeFontName
+LabelStereotypeFontSize
+LabelStereotypeFontStyle
+LegendBackgroundColor
+LegendBorderColor
+LegendBorderThickness
+LegendFontColor
+LegendFontName
+LegendFontSize
+LegendFontStyle
+LexicalBackgroundColor
+LexicalBorderColor
+LifelineStrategy
+Linetype
+MachineBackgroundColor
+MachineBorderColor
+MachineBorderThickness
+MachineFontColor
+MachineFontName
+MachineFontSize
+MachineFontStyle
+MachineStereotypeFontColor
+MachineStereotypeFontName
+MachineStereotypeFontSize
+MachineStereotypeFontStyle
+MaxAsciiMessageLength
+MaxMessageSize
+MinClassWidth
+Monochrome
+NodeBackgroundColor
+NodeBorderColor
+NodeFontColor
+NodeFontName
+NodeFontSize
+NodeFontStyle
+NodeStereotypeFontColor
+NodeStereotypeFontName
+NodeStereotypeFontSize
+NodeStereotypeFontStyle
+Nodesep
+NoteBackgroundColor
+NoteBorderColor
+NoteBorderThickness
+NoteFontColor
+NoteFontName
+NoteFontSize
+NoteFontStyle
+NoteShadowing
+NoteTextAlignment
+ObjectAttributeFontColor
+ObjectAttributeFontName
+ObjectAttributeFontSize
+ObjectAttributeFontStyle
+ObjectBackgroundColor
+ObjectBorderColor
+ObjectBorderThickness
+ObjectFontColor
+ObjectFontName
+ObjectFontSize
+ObjectFontStyle
+ObjectStereotypeFontColor
+ObjectStereotypeFontName
+ObjectStereotypeFontSize
+ObjectStereotypeFontStyle
+PackageBackgroundColor
+PackageBorderColor
+PackageBorderThickness
+PackageFontColor
+PackageFontName
+PackageFontSize
+PackageFontStyle
+PackageStereotypeFontColor
+PackageStereotypeFontName
+PackageStereotypeFontSize
+PackageStereotypeFontStyle
+PackageStyle
+PackageTitleAlignment
+Padding
+PageBorderColor
+PageExternalColor
+PageMargin
+ParticipantBackgroundColor
+ParticipantBorderColor
+ParticipantFontColor
+ParticipantFontName
+ParticipantFontSize
+ParticipantFontStyle
+ParticipantPadding
+ParticipantStereotypeFontColor
+ParticipantStereotypeFontName
+ParticipantStereotypeFontSize
+ParticipantStereotypeFontStyle
+PartitionBackgroundColor
+PartitionBorderColor
+PartitionBorderThickness
+PartitionFontColor
+PartitionFontName
+PartitionFontSize
+PartitionFontStyle
+PathHoverColor
+PersonBackgroundColor
+PersonBorderColor
+PersonBorderThickness
+PersonFontColor
+PersonFontName
+PersonFontSize
+PersonFontStyle
+PersonStereotypeFontColor
+PersonStereotypeFontName
+PersonStereotypeFontSize
+PersonStereotypeFontStyle
+QueueBackgroundColor
+QueueBorderColor
+QueueBorderThickness
+QueueFontColor
+QueueFontName
+QueueFontSize
+QueueFontStyle
+QueueStereotypeFontColor
+QueueStereotypeFontName
+QueueStereotypeFontSize
+QueueStereotypeFontStyle
+Ranksep
+RectangleBackgroundColor
+RectangleBorderColor
+RectangleBorderThickness
+RectangleFontColor
+RectangleFontName
+RectangleFontSize
+RectangleFontStyle
+RectangleStereotypeFontColor
+RectangleStereotypeFontName
+RectangleStereotypeFontSize
+RectangleStereotypeFontStyle
+RequirementBackgroundColor
+RequirementBorderColor
+RequirementBorderThickness
+RequirementFontColor
+RequirementFontName
+RequirementFontSize
+RequirementFontStyle
+RequirementStereotypeFontColor
+RequirementStereotypeFontName
+RequirementStereotypeFontSize
+RequirementStereotypeFontStyle
+ResponseMessageBelowArrow
+RoundCorner
+SameClassWidth
+SequenceActorBorderThickness
+SequenceArrowThickness
+SequenceBoxBackgroundColor
+SequenceBoxBorderColor
+SequenceBoxFontColor
+SequenceBoxFontName
+SequenceBoxFontSize
+SequenceBoxFontStyle
+SequenceDelayFontColor
+SequenceDelayFontName
+SequenceDelayFontSize
+SequenceDelayFontStyle
+SequenceDividerBackgroundColor
+SequenceDividerBorderColor
+SequenceDividerBorderThickness
+SequenceDividerFontColor
+SequenceDividerFontName
+SequenceDividerFontSize
+SequenceDividerFontStyle
+SequenceGroupBackgroundColor
+SequenceGroupBodyBackgroundColor
+SequenceGroupBorderColor
+SequenceGroupBorderThickness
+SequenceGroupFontColor
+SequenceGroupFontName
+SequenceGroupFontSize
+SequenceGroupFontStyle
+SequenceGroupHeaderFontColor
+SequenceGroupHeaderFontName
+SequenceGroupHeaderFontSize
+SequenceGroupHeaderFontStyle
+SequenceLifeLineBackgroundColor
+SequenceLifeLineBorderColor
+SequenceLifeLineBorderThickness
+SequenceMessageAlignment
+SequenceMessageTextAlignment
+SequenceNewpageSeparatorColor
+SequenceParticipant
+SequenceParticipantBorderThickness
+SequenceReferenceAlignment
+SequenceReferenceBackgroundColor
+SequenceReferenceBorderColor
+SequenceReferenceBorderThickness
+SequenceReferenceFontColor
+SequenceReferenceFontName
+SequenceReferenceFontSize
+SequenceReferenceFontStyle
+SequenceReferenceHeaderBackgroundColor
+SequenceStereotypeFontColor
+SequenceStereotypeFontName
+SequenceStereotypeFontSize
+SequenceStereotypeFontStyle
+Shadowing
+StackBackgroundColor
+StackBorderColor
+StackFontColor
+StackFontName
+StackFontSize
+StackFontStyle
+StackStereotypeFontColor
+StackStereotypeFontName
+StackStereotypeFontSize
+StackStereotypeFontStyle
+StateAttributeFontColor
+StateAttributeFontName
+StateAttributeFontSize
+StateAttributeFontStyle
+StateBackgroundColor
+StateBorderColor
+StateEndColor
+StateFontColor
+StateFontName
+StateFontSize
+StateFontStyle
+StateMessageAlignment
+StateStartColor
+StereotypeABackgroundColor
+StereotypeABorderColor
+StereotypeCBackgroundColor
+StereotypeCBorderColor
+StereotypeEBackgroundColor
+StereotypeEBorderColor
+StereotypeIBackgroundColor
+StereotypeIBorderColor
+StereotypeNBackgroundColor
+StereotypeNBorderColor
+StereotypePosition
+StorageBackgroundColor
+StorageBorderColor
+StorageFontColor
+StorageFontName
+StorageFontSize
+StorageFontStyle
+StorageStereotypeFontColor
+StorageStereotypeFontName
+StorageStereotypeFontSize
+StorageStereotypeFontStyle
+Style
+SvglinkTarget
+SwimlaneBorderColor
+SwimlaneBorderThickness
+SwimlaneTitleBackgroundColor
+SwimlaneTitleFontColor
+SwimlaneTitleFontName
+SwimlaneTitleFontSize
+SwimlaneTitleFontStyle
+SwimlaneWidth
+SwimlaneWrapTitleWidth
+TabSize
+TimingFontColor
+TimingFontName
+TimingFontSize
+TimingFontStyle
+TitleBackgroundColor
+TitleBorderColor
+TitleBorderRoundCorner
+TitleBorderThickness
+TitleFontColor
+TitleFontName
+TitleFontSize
+TitleFontStyle
+UsecaseBackgroundColor
+UsecaseBorderColor
+UsecaseBorderThickness
+UsecaseFontColor
+UsecaseFontName
+UsecaseFontSize
+UsecaseFontStyle
+UsecaseStereotypeFontColor
+UsecaseStereotypeFontName
+UsecaseStereotypeFontSize
+UsecaseStereotypeFontStyle
+WrapWidth
+```
