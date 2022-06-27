@@ -1,18 +1,15 @@
-# plantuml教程及主题模板
-
-plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)  
+plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)
 plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
 
 ---
 ## 时序图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMDcxNDM=,size_16,color_FFFFFF,t_70)
 
 ```java
 @startuml
 
 ' 引入主题
-' !include https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml
-!include https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml
+!include https://puml.littletools.ml/theme/frlh.style
 
 ' 定义角色
 actor User
@@ -62,13 +59,12 @@ end note
 ```
 ---
 ## 流程图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3a344f4b78ae4050b5e97f5bbb7ddb88.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3a344f4b78ae4050b5e97f5bbb7ddb88.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMDcxNDM=,size_16,color_FFFFFF,t_70)
 ```java
 @startuml
 
 ' 引入主题
-' !include https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml
-!include https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml
+!include https://puml.littletools.ml/theme/frlh.style
 
 ' 开始流程
 |外部调用|
@@ -101,24 +97,28 @@ stop
 
 ---
 ## 自定义主题
-已发布到：[https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml](https://codechina.csdn.net/-/snippets/685/raw/master/frlh-plantuml-theme.puml)  
-已发布到：[https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml](https://raw.githubusercontent.com/frcoder-lh/plantuml/main/frlh-plantuml-theme.puml)
+已发布到：[https://puml.littletools.ml/theme/frlh.style](https://puml.littletools.ml/theme/frlh.style)
 ```css
 @startuml
 
 ' 预置颜色
+!$c0="#transparent"
 !$c1="#E1F5A9"
 !$c2="#F3E2A9"
 !$c3="#F5A9A9"
 !$c4="#A9E2F3"
 !$c5="#ECCEF5"
 
+
 skinparam style strictuml
 skinparam backgroundColor write
+hide empty description
+
 
 ' 时序图
 skinparam Sequence {
 
+autonumber "0."
 MessageAlign center
 
 LifeLine {
@@ -163,6 +163,10 @@ BorderThickness 0.7
 FontName Monaco
 FontSize 11
 FontColor black
+}
+
+Body {
+BackgroundColor transparent
 }
 }
 
@@ -211,6 +215,15 @@ skinparam Condition {
 Style InsideDiamond
 EndStyle hline
 }
+
+'状态图
+skinparam State {
+BackgroundColor write
+BorderColor black
+}
+
+'主题作者：FRLH
+right footer <font size=8 color=ghostwhite><&align-right>FRLH<&align-left></font>
 
 @enduml
 
@@ -786,3 +799,6 @@ UsecaseStereotypeFontSize
 UsecaseStereotypeFontStyle
 WrapWidth
 ```
+
+# 附录：颜色表
+![在这里插入图片描述](https://img-blog.csdnimg.cn/42c0c06f23014a8f92b2b7c88a1ad47a.png)
