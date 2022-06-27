@@ -3,7 +3,7 @@ plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
 
 ---
 ## 时序图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMDcxNDM=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png)
 
 ```java
 @startuml
@@ -59,7 +59,7 @@ end note
 ```
 ---
 ## 流程图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3a344f4b78ae4050b5e97f5bbb7ddb88.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMDcxNDM=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3a344f4b78ae4050b5e97f5bbb7ddb88.png)
 ```java
 @startuml
 
