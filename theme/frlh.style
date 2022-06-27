@@ -17,7 +17,6 @@ hide empty description
 ' 时序图
 skinparam Sequence {
 
-autonumber "0."
 MessageAlign center
 
 LifeLine {
