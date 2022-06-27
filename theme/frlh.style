@@ -118,6 +118,7 @@ EndStyle hline
 skinparam State {
 BackgroundColor write
 BorderColor black
+ArrowThickness 1
 }
 
 '主题作者：FRLH
