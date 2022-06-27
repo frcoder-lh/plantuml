@@ -1,4 +1,4 @@
-plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)
+plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)  
 plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
 
 ---
