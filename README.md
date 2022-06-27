@@ -2,6 +2,9 @@ plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com
 plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
 
 ---
+FRLH主题：[https://puml.littletools.ml/theme/frlh.style](https://puml.littletools.ml/theme/frlh.style)
+
+---
 ## 时序图
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/27cff61a532742ee98607e6a733e55e1.png)
 
@@ -95,139 +98,6 @@ stop
 
 ```
 
----
-## 自定义主题
-已发布到：[https://puml.littletools.ml/theme/frlh.style](https://puml.littletools.ml/theme/frlh.style)
-```css
-@startuml
-
-' 预置颜色
-!$c0="#transparent"
-!$c1="#E1F5A9"
-!$c2="#F3E2A9"
-!$c3="#F5A9A9"
-!$c4="#A9E2F3"
-!$c5="#ECCEF5"
-
-
-skinparam style strictuml
-skinparam backgroundColor write
-hide empty description
-
-
-' 时序图
-skinparam Sequence {
-
-autonumber "0."
-MessageAlign center
-
-LifeLine {
-BorderColor black
-BackgroundColor write
-}
-
-Arrow {
-Color black
-BackgroundColor write
-FontColor black
-FontSize 13
-FontName Monaco
-}
-
-Actor {
-BorderColor black
-BackgroundColor write
-FontColor black
-FontSize 14
-FontName Monaco
-}
-
-Participant {
-BorderColor black
-BackgroundColor write
-FontName Monaco
-FontSize 14
-FontColor black
-}
-
-Group {
-BorderColor black
-BorderThickness 0.7
-FontName Monaco
-FontSize 11
-FontColor black
-
-Header {
-BorderColor black
-BorderThickness 0.7
-FontName Monaco
-FontSize 11
-FontColor black
-}
-
-Body {
-BackgroundColor transparent
-}
-}
-
-Box {
-BorderColor black
-}
-
-}
-
-
-
-' 流程图
-skinparam Activity {
-
-BorderColor black
-BorderThickness 1
-BackgroundColor write
-LineColor red
-FontColor black
-FontName Monaco
-FontSize 14
-
-Arrow {
-Color black
-Thickness 0.5
-BackgroundColor write
-FontColor black
-FontSize 14
-FontName Monaco
-MessageAlignment center
-}
-
-Diamond {
-BorderColor black
-BorderThickness 0.7
-BackgroundColor write
-LineColor black
-FontColor black
-FontName Monaco
-FontSize 14
-}
-
-}
-
-skinparam Condition {
-Style InsideDiamond
-EndStyle hline
-}
-
-'状态图
-skinparam State {
-BackgroundColor write
-BorderColor black
-}
-
-'主题作者：FRLH
-right footer <font size=8 color=ghostwhite><&align-right>FRLH<&align-left></font>
-
-@enduml
-
-```
 -----
 # 附录：样式表
 ```css
