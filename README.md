@@ -1,5 +1,6 @@
-plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)  
-plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)
+
+plantuml教程：[https://plantuml.com/zh/sequence-diagram](https://plantuml.com/zh/sequence-diagram)   
+plantuml在线工具：[https://www.planttext.com](https://www.planttext.com/)  
 
 ---
 FRLH主题：[https://puml.littletools.ml/theme/frlh.style](https://puml.littletools.ml/theme/frlh.style)
@@ -59,7 +60,6 @@ note left of User #aqua
 end note
 
 @enduml
-
 ```
 ---
 ## 流程图
@@ -96,7 +96,29 @@ endif
 stop
 
 @enduml
+```
 
+---
+## 状态图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7e9d9a683ad447adaa27b50a651db7aa.png)
+```java
+@startuml
+
+' 引入主题
+!include https://puml.littletools.ml/theme/frlh.style
+
+state 1 $c1: there is some info
+
+' 开始流程
+[*]-d[$c2]->1
+1-r->2
+2-d->3
+3-l->4
+4-[#red]>5
+5-[#red]->6
+6-u->[*]
+
+@enduml
 ```
 
 -----
