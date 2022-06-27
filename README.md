@@ -10,6 +10,7 @@ FRLH主题：[https://puml.littletools.ml/theme/frlh.style](https://puml.littlet
 
 ```java
 @startuml
+authnumber "0."
 
 ' 引入主题
 !include https://puml.littletools.ml/theme/frlh.style
